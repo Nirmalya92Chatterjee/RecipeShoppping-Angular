@@ -1,5 +1,5 @@
 
- <app-header></app-header>
+ <app-header (selections)="onSelect($event)"></app-header>
 <div class="container">
  
 <div class="row">
@@ -7,8 +7,8 @@
   <div class="col-md-12">
 
   
-    <app-recipe></app-recipe>
-    <app-shopping-list></app-shopping-list>
+    <app-recipe *ngIf="selectedfrom === 'recipe'"></app-recipe>
+    <app-shopping-list *ngIf="selectedfrom === 'shopping-list'"></app-shopping-list>
   </div>
 </div>
 
