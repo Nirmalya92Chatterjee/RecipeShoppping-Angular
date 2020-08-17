@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef, EventEmitter,Output } from '@angular/core';
+import { Ingridient } from 'src/app/shared/ingridient.model';
+import { ShoppingListService } from '../shopping-list.service';
+
+
+
 
 @Component({
   selector: 'app-shopping-edit',
@@ -7,9 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingEditComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('amountInput') amountInput: ElementRef;
+  @ViewChild('nameInput') nameInput: ElementRef;
+ 
+  @Output() ondeleteclicked = new EventEmitter<void>();
+
+  constructor(private shoplistser: ShoppingListService) { }
 
   ngOnInit(): void {
+  }
+
+  Addclicked() {
+    const value = this.nameInput.nativeElement.value;
+    const amount = this.amountInput.nativeElement.value;
+    const ingr = new Ingridient(value, amount);
+    this.shoplistser.addItem(ingr);
+  }
+
+  Deleteclicked() {
+    this.ondeleteclicked.emit();
   }
 
 }

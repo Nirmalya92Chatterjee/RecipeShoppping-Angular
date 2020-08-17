@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
+  providers: [RecipeService]
 })
 export class RecipeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recser : RecipeService) { }
 
-  RecipeDetail: { name: string, description: string, image: string } = { name : '', description : '' ,image : ''};
+  RecipeDetail: Recipe;
 
   ngOnInit() {
+    this.recser.itemSelected.subscribe((data:Recipe) => {
+      this.RecipeDetail = data;
+    
+   })
   }
-  recclick(data)
-  {
-    console.log(data);
-    this.RecipeDetail.name = data.name;
-    this.RecipeDetail.description = data.desc;
-    this.RecipeDetail.image = data.imgpath;
-    console.log(this.RecipeDetail);
-  }
+
 }

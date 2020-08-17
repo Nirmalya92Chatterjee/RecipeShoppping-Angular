@@ -1,13 +1,17 @@
 <div class="row">
 <div class="col-xs-12" >
-<button class="btn btn-success">New Recipe</button>
+<button [routerLink]="['new']"  [queryParams] = {isAllowEdit:0} class="btn btn-success">New Recipe</button>
 </div>
 </div>
 <hr>
 <div class="row">
 <div class="col-xs-12">
-    <app-recipe-item  *ngFor="let rec of recipe"
-        [recipeindvitem]="rec" (recipedetclicked)="recipeclickedtt(rec)"></app-recipe-item>
+    <app-recipe-item  *ngFor="let rec of recipe;let i = index"
+        [recipeindvitem]="rec" 
+        [routerLink]="['/recipe','detail']" [queryParams]={id:i}
+        >
+    </app-recipe-item>
+      
     
 </div>
 </div>

@@ -8,11 +8,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class HeaderComponent{
-  @Output() selections = new EventEmitter<string>();
+ // @Output() selections = new EventEmitter<string>();
   collapsed = true;
   constructor(){}
-   onSelect(tag: string) {
-     this.selections.emit(tag);
-  }
+  /* onSelect(tag: string) {
+     this.selections.emit(tag);*/
+  //}
 
 }

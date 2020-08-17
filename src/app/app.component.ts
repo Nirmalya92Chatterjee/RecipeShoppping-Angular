@@ -9,9 +9,9 @@ export class AppComponent {
   title = 'RecipeShopping';
   selectedfrom = '';
 
-  onSelect(data: string)
+ /* onSelect(data: string)
   {
-    console.log('hey!!');
+   
     this.selectedfrom = data;
-  }
+  }*/
 }
