@@ -18,7 +18,7 @@
 <ul class="dropdown-menu">
 <li><a style="cursor:pointer" (click)="onclickaddRecipetoShoppinglist()">Add Ingridient to Shopping List</a></li>
 <li><a [routerLink]="['../edit']" [queryParams]={isAllowEdit:1} [queryParamsHandling]="'merge'">Edit Recipe</a></li>
-<li><a >Delete Recipe</a></li>
+<li><a (click)="deleterec()">Delete Recipe</a></li>
 </ul>
 </div>
 </div>
