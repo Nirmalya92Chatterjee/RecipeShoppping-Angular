@@ -1,5 +1,6 @@
 
 import { Component, Output, EventEmitter } from '@angular/core';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,16 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent{
  // @Output() selections = new EventEmitter<string>();
   collapsed = true;
-  constructor(){}
+  constructor(private datastoreser : DataStorageService){}
   /* onSelect(tag: string) {
      this.selections.emit(tag);*/
   //}
+  onSaveData() {
+    this.datastoreser.storerecipes();
+  }
+
+  fetchdata() {
+    this.datastoreser.fetchRecipe().subscribe();
+  }
 
 }

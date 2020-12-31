@@ -14,7 +14,7 @@ constructor(private shoppinglistsr : ShoppingListService) { }
   @Output() itemSelected = new EventEmitter<Recipe>();
   onAddedRecipe = new Subject<Recipe[]>();
   
-  private recipe: Recipe[] = [new Recipe('Tasty Schnitzel',
+  /*private recipe: Recipe[] = [new Recipe('Tasty Schnitzel',
     'A Super Tasty Schnitzel-Just awesome!!',
     'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
     [new Ingridient('Meat', 1),
@@ -24,7 +24,9 @@ constructor(private shoppinglistsr : ShoppingListService) { }
       'What else you need to say!',
 'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
   [new Ingridient('Bun', 1),
-    new Ingridient('Meat',2)])];
+    new Ingridient('Meat',2)])];*/
+
+  private recipe: Recipe[] = [];
 
   getRecipe() {
     return this.recipe.slice();
@@ -33,6 +35,11 @@ constructor(private shoppinglistsr : ShoppingListService) { }
   getindvRecipe(index: number) {
    
     return this.recipe[index];  
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipe = recipes;
+    this.onAddedRecipe.next(this.recipe.slice());
   }
 
   addrecipeitemtoShoppinglist(ingridients : Ingridient[]) {
