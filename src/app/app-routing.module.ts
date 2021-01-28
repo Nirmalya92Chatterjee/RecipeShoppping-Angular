@@ -6,16 +6,19 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipestartcomponentComponent } from './recipe/recipestartcomponent/recipestartcomponent.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 import { RecipeResolverService } from './recipe/recipe-resolver.service';
+import { AuthComponnent } from './auth/auth.component';
+import { AuthGuard } from './auth/authguard';
 
 const appRoutes : Routes = [
   {
-    path: 'recipe', component: RecipeComponent, children: [
+    path: 'recipe', component: RecipeComponent,canActivate:[AuthGuard], children: [
     {path:'',component:RecipestartcomponentComponent},
     { path: 'detail', component: RecipeDetailComponent },
     { path: 'new',component : RecipeEditComponent},
     { path: 'edit', component : RecipeEditComponent}
   ],resolve:[RecipeResolverService]},
-  { path: 'shopping-list', component: ShoppingListComponent }
+  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'auth', component: AuthComponnent }
 ];
 
 @NgModule({
