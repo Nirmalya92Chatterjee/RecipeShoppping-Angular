@@ -14,9 +14,9 @@ constructor(private datastorageser : DataStorageService,private recipeser:Recipe
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     
     const recipe = this.recipeser.getRecipe();
-    if (recipe.length === 0)
+   /* if (recipe.length === 0)
       return this.datastorageser.fetchRecipe();
-    else
+    else*/
       return recipe;
   }
 
